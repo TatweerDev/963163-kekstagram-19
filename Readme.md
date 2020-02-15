@@ -1,7 +1,7 @@
 ﻿# Личный проект «Кекстаграм» [![Build status][travis-image]][travis-url]
 
 * Студент: [Чумаслов Александр](https://up.htmlacademy.ru/javascript/19/user/963163).
-* Наставник: [Магомед Кандаев](https://htmlacademy.ru/profile/magomedkandaev).
+* Наставник: [Убайд Исаев] (https://htmlacademy.ru/profile/id1340949).
 
 ---
 
