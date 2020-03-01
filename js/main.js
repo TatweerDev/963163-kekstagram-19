@@ -49,9 +49,9 @@ var generateData = function () {
     }
     return commentsArray;
   };
-  for (var i = 1; i < numberOfPictures; i++) {
+  for (var i = 0, j = 1; i < numberOfPictures; i++, j++) {
     var renderPhotoInfo = {
-      url: 'photos/' + i + '.jpg',
+      url: 'photos/' + j + '.jpg',
       description: 'описание фото',
       likes: getRandomMinMaxIndex(15, 200),
       comments: generateComments()
@@ -61,12 +61,20 @@ var generateData = function () {
   return userPictures;
 };
 
+// Зададим функцию открытия полноразмерного фото при клике на него
+
+
 // Создаем структуру DOM элементов
 var renderFoto = function (photo) {
   var userElement = randomPictureTemplate.cloneNode(true);
   userElement.querySelector('.picture__img').src = photo.url;
   userElement.querySelector('.picture__likes').textContent = photo.likes;
   userElement.querySelector('.picture__comments').textContent = photo.comments.length;
+  userElement.addEventListener('click', function (evt) {
+    evt.preventDefault();
+    renderPhotoPopup(photo);
+    showBigPicture();    
+  })
   return userElement;
 };
 
@@ -186,6 +194,8 @@ effectLevelPin.addEventListener('mouseup', function () {
 });
 
 showPhotos();
-// showBigPicture();
-// renderPhotoPopup(generateData()[5]);
+//showPictureByClick();
+//showBigPicture();
+//renderPhotoPopup(generateData()[4]);
 //hideElements();
+
