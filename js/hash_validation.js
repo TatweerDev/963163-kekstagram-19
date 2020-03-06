@@ -1,9 +1,10 @@
 'use strict';
 
+(function (){
 var HASH_ARRAY_MAX_LENGTH = 5;
 //var LEGAL_CHAR = /[a-z0-9а-я#]/;
 
-// Зададим функцию, записывающую массив из Хэш-тегов 
+// Функция, записывающая массив из Хэш-тегов 
 var hashTagInput = document.querySelector('.text__hashtags');
 hashTagInput.addEventListener('input', function () {
   var hashArray = hashTagInput.value.toLowerCase().split(' ');
@@ -44,3 +45,4 @@ var checkHashTagValidity = function (array) {
   hashTagInput.setCustomValidity(errorMessage);  
   });  
 };
+})();
