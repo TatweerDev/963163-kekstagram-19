@@ -2,7 +2,7 @@
 
 // Функция, создающая массив с данными фото пользователей
 
-(function (){
+(function () {
   var numberOfNamesAndAvatars = 6;
   var messageMassive = [
     'Всё отлично!',
@@ -49,7 +49,7 @@
     return userPictures;
   };
   window.data = {
-    generateData:  generateData
+    generateData: generateData
   };
 
 })();

@@ -1,9 +1,9 @@
 'use strict';
 
-(function (){
+(function () {
   var KEY_CODE = {
-      ESCAPE: 27,
-      ENTER: 13
+    ESCAPE: 27,
+    ENTER: 13
   };
   var isEscEvent = function (evt, action) {
     if (evt.keyCode === KEY_CODE.ESCAPE) {
