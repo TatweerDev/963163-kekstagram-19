@@ -1,6 +1,6 @@
 'use strict';
 
-(function (){
+(function () {
   var pictureUserTemplate = document.querySelector('.pictures');
   var bigPictureTemplate = document.querySelector('.big-picture');
   var documentBody = document.querySelector('body');
@@ -18,8 +18,8 @@
     userElement.addEventListener('click', function (evt) {
       evt.preventDefault();
       renderPhotoPopup(photo);
-      window.events.showBigPicture();    
-    })
+      window.events.showBigPicture();
+    });
     return userElement;
   };
 
@@ -58,23 +58,22 @@
     commentsWrapper.appendChild(fragment);
   };
 
-  // Скрываем блоки счетчика комментариев и загрузки новых комментариев. Создадим для этого функцию, и применим ее.
+  // Скрывает блоки счетчика комментариев и загрузки новых комментариев.
   var addClassToElement = function (element, className) {
     element.classList.add(className);
   };
   var hideElements = function () {
     var commentsCounter = document.querySelector('.social__comment-count');
-    var commentsLoader = document.querySelector('.comments-loader');  
+    var commentsLoader = document.querySelector('.comments-loader');
     addClassToElement(commentsCounter, 'hidden');
     addClassToElement(commentsLoader, 'hidden');
     addClassToElement(documentBody, 'modal-open');
   };
 
-  window.clone2dom = {
+  window.renderPicrures = {
     addClassToElement: addClassToElement,
     hideElements: hideElements
-  }
+  };
 
-showPhotos();
+  showPhotos();
 })();
-
