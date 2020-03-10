@@ -23,11 +23,18 @@
   var getRandomIndex = function (arr) {
     return Math.floor(Math.random() * arr.length);
   };
+
+  // Функция сброса настроек эффекта ппи выборе эффекта original
+  var toggleElementClass = function (element, className, force) {
+    element.classList.toggle(className, force);
+  };
+
   window.utils = {
     isEscEvent: isEscEvent,
     isEnterEvent: isEnterEvent,
     getRandomMinMaxIndex: getRandomMinMaxIndex,
-    getRandomIndex: getRandomIndex
+    getRandomIndex: getRandomIndex,
+    toggleElementClass: toggleElementClass
   };
 
 })();

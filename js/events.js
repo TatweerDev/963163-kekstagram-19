@@ -6,6 +6,7 @@
   var photosRedactForm = document.querySelector('.img-upload__overlay');
   var bigPictureTemplate = document.querySelector('.big-picture');
   var bigPictureCancel = bigPictureTemplate.querySelector('#picture-cancel');
+  var effectPinBar = document.querySelector('.img-upload__effect-level');
   var onPopupEscPress = function (evt) {
     window.utils.isEscEvent(evt, closePhotoRedactForm);
   };
@@ -19,6 +20,7 @@
   var showEditForm = function () {
     removeClassFromElement(photosRedactForm, 'hidden');
     window.renderPicrures.addClassToElement(documentBody, 'modal-open');
+    window.utils.toggleElementClass(effectPinBar, 'hidden', true);
     document.addEventListener('keydown', onPopupEscPress);
   };
 
