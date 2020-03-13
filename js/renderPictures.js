@@ -1,44 +1,9 @@
 'use strict';
 
 (function () {
-  var pictureUserTemplate = document.querySelector('.pictures');
+
   var bigPictureTemplate = document.querySelector('.big-picture');
   var documentBody = document.querySelector('body');
-  var randomPictureTemplate = document.querySelector('#picture')
-      .content
-      .querySelector('.picture');
-
-
-  // Создаем структуру DOM элементов
-  var renderFoto = function (photo) {
-    var userElement = randomPictureTemplate.cloneNode(true);
-    userElement.querySelector('.picture__img').src = photo.url;
-    userElement.querySelector('.picture__likes').textContent = photo.likes;
-    userElement.querySelector('.picture__comments').textContent = photo.comments.length;
-    userElement.addEventListener('click', function (evt) {
-      evt.preventDefault();
-      renderPhotoPopup(photo);
-      window.events.showBigPicture();
-    });
-    return userElement;
-  };
-
-  // Создает фрагмент из массива элементов
-  var makeFragment = function (array) {
-    var fragment = document.createDocumentFragment();
-    array.forEach(function (element) {
-      fragment.appendChild(renderFoto(element));
-    });
-    return fragment;
-  };
-
-  // Вставляет сгенерированный массив в разметку
-  var showPhotos = function () {
-    var userPictures = window.data.generateData();
-    pictureUserTemplate.appendChild(makeFragment(userPictures));
-  };
-
-  // Функция, создающая  DOM элементы из массива
 
   var renderPhotoPopup = function (post) {
     var fragment = document.createDocumentFragment();
@@ -75,5 +40,8 @@
     hideElements: hideElements
   };
 
-  showPhotos();
+  window.renderPicrures = {
+    renderPhotoPopup: renderPhotoPopup,
+    addClassToElement: addClassToElement
+  };
 })();
