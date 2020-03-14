@@ -41,13 +41,19 @@
     document.body.insertAdjacentElement('afterbegin', node);
   };
 
+  // Функция удаляющая класс из элемента
+  var removeClassFromElement = function (element, className) {
+    element.classList.remove(className);
+  };
+
   window.utils = {
     isEscEvent: isEscEvent,
     isEnterEvent: isEnterEvent,
     getRandomMinMaxIndex: getRandomMinMaxIndex,
     getRandomIndex: getRandomIndex,
     toggleElementClass: toggleElementClass,
-    errorHandler: errorHandler
+    errorHandler: errorHandler,
+    removeClassFromElement: removeClassFromElement
   };
 
 })();
