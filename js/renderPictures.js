@@ -24,24 +24,17 @@
   };
 
   // Скрывает блоки счетчика комментариев и загрузки новых комментариев.
-  var addClassToElement = function (element, className) {
-    element.classList.add(className);
-  };
+
   var hideElements = function () {
     var commentsCounter = document.querySelector('.social__comment-count');
     var commentsLoader = document.querySelector('.comments-loader');
-    addClassToElement(commentsCounter, 'hidden');
-    addClassToElement(commentsLoader, 'hidden');
-    addClassToElement(documentBody, 'modal-open');
-  };
-
-  window.renderPicrures = {
-    addClassToElement: addClassToElement,
-    hideElements: hideElements
+    window.utils.addClassToElement(commentsCounter, 'hidden');
+    window.utils.addClassToElement(commentsLoader, 'hidden');
+    window.utils.addClassToElement(documentBody, 'modal-open');
   };
 
   window.renderPicrures = {
     renderPhotoPopup: renderPhotoPopup,
-    addClassToElement: addClassToElement
+    hideElements: hideElements
   };
 })();

@@ -15,11 +15,11 @@
   var showBigPicture = function () {
     window.utils.removeClassFromElement(bigPictureTemplate, 'hidden');
     document.addEventListener('keydown', onBigPhotoEscPress);
-    window.renderPicrures.addClassToElement(documentBody, 'modal-open');
+    window.utils.addClassToElement(documentBody, 'modal-open');
   };
 
   var closeBigPicture = function () {
-    window.renderPicrures.addClassToElement(bigPictureTemplate, 'hidden');
+    window.utils.addClassToElement(bigPictureTemplate, 'hidden');
     window.utils.removeClassFromElement(documentBody, 'modal-open');
     document.removeEventListener('keydown', onBigPhotoEscPress);
   };
