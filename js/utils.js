@@ -41,10 +41,14 @@
     document.body.insertAdjacentElement('afterbegin', node);
   };
 
-  // Функция удаляющая класс из элемента
+  // Удаляет и добавляет класс элементу
   var removeClassFromElement = function (element, className) {
     element.classList.remove(className);
   };
+  var addClassToElement = function (element, className) {
+    element.classList.add(className);
+  };
+
 
   window.utils = {
     isEscEvent: isEscEvent,
@@ -53,7 +57,8 @@
     getRandomIndex: getRandomIndex,
     toggleElementClass: toggleElementClass,
     errorHandler: errorHandler,
-    removeClassFromElement: removeClassFromElement
+    removeClassFromElement: removeClassFromElement,
+    addClassToElement: addClassToElement
   };
 
 })();
