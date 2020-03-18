@@ -30,7 +30,7 @@
 
   var showEditForm = function () {
     window.utils.removeClassFromElement(photosRedactForm, 'hidden');
-    window.renderPicrures.addClassToElement(documentBody, 'modal-open');
+    window.utils.addClassToElement(documentBody, 'modal-open');
     window.utils.toggleElementClass(effectPinBar, 'hidden', true);
     document.addEventListener('keydown', onPopupEscPress);
   };
@@ -131,7 +131,7 @@
 
   var formCloseButton = photosRedactForm.querySelector('#upload-cancel');
   var closePhotoRedactForm = function () {
-    window.renderPicrures.addClassToElement(photosRedactForm, 'hidden');
+    window.utils.addClassToElement(photosRedactForm, 'hidden');
     window.utils.removeClassFromElement(documentBody, 'modal-open');
     document.removeEventListener('keydown', onPopupEscPress);
   };

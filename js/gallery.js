@@ -2,7 +2,7 @@
 
 (function () {
   var pictureUserTemplate = document.querySelector('.pictures');
-  var imageFilters = document.querySelector('.img-filters');
+
   var randomPictureTemplate = document.querySelector('#picture')
       .content
       .querySelector('.picture');
@@ -29,15 +29,18 @@
     });
     return fragment;
   };
+  var renderPosts = function (userPictures) {
+    pictureUserTemplate.appendChild(makeFragment(userPictures));
+  };
   // Вставляет сгенерированный массив в разметку и показывает меню фильтров изображений
   var showPhotos = function (userPictures) {
-    pictureUserTemplate.appendChild(makeFragment(userPictures));
-    window.utils.removeClassFromElement(imageFilters, 'img-filters--inactive');
-    window.filter.imgFilter(userPictures);
+    renderPosts(userPictures);
+    window.filter.activate(userPictures);
   };
 
   window.gallery = {
-    showPhotos: showPhotos
+    showPhotos: showPhotos,
+    renderPosts: renderPosts
   };
 
   window.backend.getData(window.backend.GET_URL, showPhotos, window.utils.errorHandler);

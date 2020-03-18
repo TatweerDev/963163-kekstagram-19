@@ -33,6 +33,8 @@
     window.utils.addClassToElement(documentBody, 'modal-open');
   };
 
+  // Ограничивает количество загруженных комментов до 5
+
   window.renderPicrures = {
     renderPhotoPopup: renderPhotoPopup,
     hideElements: hideElements
