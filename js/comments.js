@@ -48,6 +48,7 @@
 
   var onLoadButtonClick = function () {
     getNextComments();
+    renderCommentsCount();
   };
 
   var hideLoadButton = function () {
@@ -73,7 +74,6 @@
     commentsCount.classList.add('comments-count');
     commentsCount.textContent = getCurrentCommentCount() + ' из ' + allComments.length + ' комментариев';
     commentsCountBlock.textContent = '';
-    // console.log(getCurrentCommentCount() + ' из ' + allComments.length + ' комментариев');
     commentsCountBlock.appendChild(commentsCount);
   };
 
