@@ -24,6 +24,17 @@
     return Math.floor(Math.random() * arr.length);
   };
 
+  var shuffleArray = function (array) {
+    var clonedArray = array.slice();
+    for (var i = clonedArray.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var temp = clonedArray[i];
+      clonedArray[i] = clonedArray[j];
+      clonedArray[j] = temp;
+    }
+    return clonedArray;
+  };
+
   // Функция сброса настроек эффекта ппи выборе эффекта original
   var toggleElementClass = function (element, className, force) {
     element.classList.toggle(className, force);
@@ -58,7 +69,8 @@
     toggleElementClass: toggleElementClass,
     errorHandler: errorHandler,
     removeClassFromElement: removeClassFromElement,
-    addClassToElement: addClassToElement
+    addClassToElement: addClassToElement,
+    shuffleArray: shuffleArray
   };
 
 })();

@@ -16,6 +16,9 @@
     SERVER_UNAVAILABLE: 503,
     SERVER_OFF: 521
   };
+
+  // Общая функция взаимодействия с сервером
+
   var serverRequest = function (method, url, onLoad, onError, data) {
     var xhr = new XMLHttpRequest();
     xhr.responseType = 'json';
@@ -42,9 +45,15 @@
     xhr.open(method, url);
     xhr.send(data);
   };
+
+  // Получает данные
+
   var getData = function (url, onLoad, onError) {
     serverRequest('GET', url, onLoad, onError);
   };
+
+  // Принимает данные
+
   var postData = function (url, onLoad, onError, data) {
     serverRequest('POST', url, onLoad, onError, data);
   };

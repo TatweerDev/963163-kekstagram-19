@@ -5,22 +5,17 @@
   var bigPictureTemplate = document.querySelector('.big-picture');
   var documentBody = document.querySelector('body');
 
+  // Отрисовывает страничку полноэекранного фото пользооавтеля
+
   var renderPhotoPopup = function (post) {
-    var fragment = document.createDocumentFragment();
-    var commentsWrapper = bigPictureTemplate.querySelector('.social__comments');
-    var commentTemplate = bigPictureTemplate.querySelector('.social__comment');
+    // var fragment = document.createDocumentFragment();
+    // var commentsWrapper = bigPictureTemplate.querySelector('.social__comments');
+    window.comments.init(post.comments);
     bigPictureTemplate.querySelector('.big-picture__img img').src = post.url;
     bigPictureTemplate.querySelector('.likes-count').textContent = post.likes;
     bigPictureTemplate.querySelector('.comments-count').textContent = post.comments.length;
-    post.comments.forEach(function (comment) {
-      var template = commentTemplate.cloneNode(true);
-      template.querySelector('.social__picture').src = comment.avatar;
-      template.querySelector('.social__picture').alt = comment.name;
-      template.querySelector('.social__text').textContent = comment.message;
-      fragment.appendChild(template);
-    });
     bigPictureTemplate.querySelector('.social__caption').textContent = post.description;
-    commentsWrapper.appendChild(fragment);
+    // commentsWrapper.appendChild(fragment);
   };
 
   // Скрывает блоки счетчика комментариев и загрузки новых комментариев.
