@@ -14,6 +14,7 @@
     document.querySelector('.img-filters__button--active').classList.remove('img-filters__button--active');
     evt.classList.add('img-filters__button--active');
   };
+
   var selectFilter = function (evt) {
     var filterId = evt.target.id;
     switch (filterId) {
@@ -27,21 +28,9 @@
     }
   };
 
-  var showFilter = function () {
-    window.utils.removeClassFromElement(imageFilters, 'img-filters--inactive');
-  };
-
-  var updatePosts = function (posts) {
-    var pictures = document.querySelectorAll('.container.pictures a.picture');
-    pictures.forEach(function (elem) {
-      elem.remove();
-    });
-    window.gallery.renderPosts(posts);
-  };
-
   var randomPost = function () {
-    var randamize = window.utils.shuffleArray(postData).slice(0, RANDOM_IMG_COUNT);
-    updatePosts(randamize);
+    var randomize = window.utils.shuffleArray(postData).slice(0, RANDOM_IMG_COUNT);
+    updatePosts(randomize);
   };
 
   var discussPost = function () {
@@ -54,6 +43,18 @@
 
   var defaultPosts = function () {
     updatePosts(postData);
+  };
+
+  var showFilter = function () {
+    window.utils.removeClassFromElement(imageFilters, 'img-filters--inactive');
+  };
+
+  var updatePosts = function (posts) {
+    var pictures = document.querySelectorAll('.container.pictures a.picture');
+    pictures.forEach(function (elem) {
+      elem.remove();
+    });
+    window.gallery.renderPosts(posts);
   };
 
   // Вызов функции
