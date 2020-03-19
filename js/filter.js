@@ -18,13 +18,17 @@
   var selectFilter = function (evt) {
     var filterId = evt.target.id;
     switch (filterId) {
-      case FILTER_TYPE.FILTER_RANDOM:
+      case FILTER_TYPE.FILTER_RANDOM: {
         randomPost();
         break;
-      case FILTER_TYPE.FILTER_DISCUSSED:
+      }
+      case FILTER_TYPE.FILTER_DISCUSSED: {
         discussPost();
         break;
-      default: defaultPosts();
+      }
+      default: {
+        defaultPosts();
+      }
     }
   };
 
@@ -46,7 +50,7 @@
   };
 
   var showFilter = function () {
-    window.utils.removeClassFromElement(imageFilters, 'img-filters--inactive');
+    imageFilters.classList.remove('img-filters--inactive');
   };
 
   var updatePosts = function (posts) {
@@ -58,14 +62,14 @@
   };
 
   // Вызов функции
-  var handleImageClick = window.debounce(function (evt) {
+  var handleImageFilterClick = window.debounce(function (evt) {
     toggleActiveClass(evt.target);
     selectFilter(evt);
   });
 
   var onImgFilterClick = function (evt) {
     if (evt.target.type === 'button') {
-      handleImageClick(evt);
+      handleImageFilterClick(evt);
     }
   };
 

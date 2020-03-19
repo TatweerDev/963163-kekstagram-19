@@ -39,7 +39,15 @@
     element.classList.toggle(className, force);
   };
 
-  var errorHandler = function (errorMessage) {
+  var addModalOpenClass = function () {
+    document.body.classList.add('modal-open');
+  };
+
+  var removeModalOpenClass = function () {
+    document.body.classList.remove('modal-open');
+  };
+
+  var onSubmitErrorHandle = function (errorMessage) {
     var node = document.createElement('div');
     node.style = 'z-index: 100; margin: 0 auto; text-align: center; background-color: red;';
     node.style.position = 'absolute';
@@ -51,26 +59,16 @@
     document.body.insertAdjacentElement('afterbegin', node);
   };
 
-  // Удаляет и добавляет класс элементу
-
-  var removeClassFromElement = function (element, className) {
-    element.classList.remove(className);
-  };
-  var addClassToElement = function (element, className) {
-    element.classList.add(className);
-  };
-
-
   window.utils = {
     isEscEvent: isEscEvent,
     isEnterEvent: isEnterEvent,
     getRandomMinMaxIndex: getRandomMinMaxIndex,
     getRandomIndex: getRandomIndex,
     toggleElementClass: toggleElementClass,
-    errorHandler: errorHandler,
-    removeClassFromElement: removeClassFromElement,
-    addClassToElement: addClassToElement,
-    shuffleArray: shuffleArray
+    onSubmitErrorHandle: onSubmitErrorHandle,
+    shuffleArray: shuffleArray,
+    addModalOpenClass: addModalOpenClass,
+    removeModalOpenClass: removeModalOpenClass
   };
 
 })();
