@@ -19,9 +19,6 @@
   var effectPinBar = document.querySelector('.img-upload__effect-level');
   var inputLevelValue = document.querySelector('.effect-level__value');
   var photosForm = document.querySelector('.img-upload__form');
-  var successTemplate = document.querySelector('#success');
-  var errorTemplate = document.querySelector('#error');
-  var documentMain = document.querySelector('main');
   var photosRedactForm = document.querySelector('.img-upload__overlay');
   var documentBody = document.querySelector('body');
   var photosUploadButton = document.querySelector('#upload-file');
@@ -29,6 +26,7 @@
   // Показ формы редактировния фото
 
   var showEditForm = function () {
+    resetImageEffect();
     window.utils.removeClassFromElement(photosRedactForm, 'hidden');
     window.utils.addClassToElement(documentBody, 'modal-open');
     window.utils.toggleElementClass(effectPinBar, 'hidden', true);
@@ -122,6 +120,7 @@
   // Функция сброса позиции бегунка при смене эффекта
   var resetImageEffect = function () {
     imagePreview.className = '';
+    imagePreview.style = '';
     inputEffectLevel.value = 100;
     effectLevelPin.style.left = '100%';
     effectLevelDepth.style.width = '100%';
@@ -146,37 +145,15 @@
   // Отправка данных формы загрузки фото на сервер
   var onSuccess = function () {
     closePhotoRedactForm();
-    documentMain.appendChild(successTemplate.content.cloneNode(true));
-    documentBody.addEventListener('click', closeFormSuccessMessage);
-    document.addEventListener('keydown', onMeassagePressEsc);
+    window.modal.showSuccessPopup();
   };
   var onFail = function () {
     closePhotoRedactForm();
-    documentMain.appendChild(errorTemplate.content.cloneNode(true));
-    documentBody.addEventListener('click', closeFormErrorMessage);
-    document.addEventListener('keydown', onFailMeassageEsc);
+    window.modal.showErrorPopup();
   };
   photosForm.addEventListener('submit', function (evt) {
     evt.preventDefault();
     window.backend.postData(window.backend.POST_URL, onSuccess, onFail, new FormData(photosForm));
   });
-
-  // Скрытие попапов с сообщением после отправки данных формы
-  var onMeassagePressEsc = function (evt) {
-    window.utils.isEscEvent(evt, closeFormSuccessMessage);
-  };
-  var onFailMeassageEsc = function (evt) {
-    window.utils.isEscEvent(evt, closeFormErrorMessage);
-  };
-  var closeFormSuccessMessage = function () {
-    documentMain.removeChild(document.querySelector('.success'));
-    document.removeEventListener('keydown', onMeassagePressEsc);
-    documentBody.removeEventListener('click', closeFormErrorMessage);
-  };
-  var closeFormErrorMessage = function () {
-    documentMain.removeChild(document.querySelector('.error'));
-    document.removeEventListener('keydown', onFailMeassageEsc);
-    documentBody.removeEventListener('click', closeFormErrorMessage);
-  };
 
 })();

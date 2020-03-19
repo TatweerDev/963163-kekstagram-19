@@ -10,7 +10,6 @@
       action();
     }
   };
-
   var isEnterEvent = function (evt, action) {
     if (evt.keyCode === KEY_CODE.ENTER) {
       action();
@@ -35,7 +34,7 @@
     return clonedArray;
   };
 
-  // Функция сброса настроек эффекта ппи выборе эффекта original
+  // Функция сброса настроек эффекта при переключении эффекта original
   var toggleElementClass = function (element, className, force) {
     element.classList.toggle(className, force);
   };
@@ -53,6 +52,7 @@
   };
 
   // Удаляет и добавляет класс элементу
+
   var removeClassFromElement = function (element, className) {
     element.classList.remove(className);
   };

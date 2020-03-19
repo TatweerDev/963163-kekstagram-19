@@ -8,14 +8,10 @@
   // Отрисовывает страничку полноэекранного фото пользооавтеля
 
   var renderPhotoPopup = function (post) {
-    // var fragment = document.createDocumentFragment();
-    // var commentsWrapper = bigPictureTemplate.querySelector('.social__comments');
     window.comments.init(post.comments);
     bigPictureTemplate.querySelector('.big-picture__img img').src = post.url;
     bigPictureTemplate.querySelector('.likes-count').textContent = post.likes;
-    bigPictureTemplate.querySelector('.comments-count').textContent = post.comments.length;
     bigPictureTemplate.querySelector('.social__caption').textContent = post.description;
-    // commentsWrapper.appendChild(fragment);
   };
 
   // Скрывает блоки счетчика комментариев и загрузки новых комментариев.
