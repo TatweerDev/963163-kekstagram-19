@@ -2,23 +2,52 @@
 
 (function () {
   var pictureUserTemplate = document.querySelector('.pictures');
+  var bigPicture = document.querySelector('.big-picture');
+  var bigPictureCloseBtn = bigPicture.querySelector('#picture-cancel');
+  var pictureTemplate = document.querySelector('#picture').content.querySelector('.picture');
 
-  var randomPictureTemplate = document.querySelector('#picture')
-      .content
-      .querySelector('.picture');
+  // Отрисовывает страничку полноэекранного фото
+  var renderPhotoPopup = function (post) {
+    bigPicture.querySelector('.big-picture__img img').src = post.url;
+    bigPicture.querySelector('.likes-count').textContent = post.likes;
+    bigPicture.querySelector('.social__caption').textContent = post.description;
+    window.comments.init(post.comments);
+  };
+
+  var onBigPhotoEscPress = function (evt) {
+    window.utils.isEscEvent(evt, closeBigPicture);
+  };
+
+  var onBigPictureCloseBtnClick = function () {
+    closeBigPicture();
+  };
+
+  var showBigPicture = function (post) {
+    renderPhotoPopup(post);
+    bigPicture.classList.remove('hidden');
+    window.utils.addModalOpenClass();
+    document.addEventListener('keydown', onBigPhotoEscPress);
+    bigPictureCloseBtn.addEventListener('click', onBigPictureCloseBtnClick);
+  };
+
+  var closeBigPicture = function () {
+    bigPicture.classList.add('hidden');
+    window.utils.removeModalOpenClass();
+    document.removeEventListener('keydown', onBigPhotoEscPress);
+    bigPictureCloseBtn.removeEventListener('click', onBigPictureCloseBtnClick);
+  };
 
   // Создает структуру DOM элементов
   var renderPhoto = function (photo) {
-    var userElement = randomPictureTemplate.cloneNode(true);
-    userElement.querySelector('.picture__img').src = photo.url;
-    userElement.querySelector('.picture__likes').textContent = photo.likes;
-    userElement.querySelector('.picture__comments').textContent = photo.comments.length;
-    userElement.addEventListener('click', function (evt) {
+    var postItem = pictureTemplate.cloneNode(true);
+    postItem.querySelector('.picture__img').src = photo.url;
+    postItem.querySelector('.picture__likes').textContent = photo.likes;
+    postItem.querySelector('.picture__comments').textContent = photo.comments.length;
+    postItem.addEventListener('click', function (evt) {
       evt.preventDefault();
-      window.renderPicrures.renderPhotoPopup(photo);
-      window.events.showBigPicture();
+      showBigPicture(photo);
     });
-    return userElement;
+    return postItem;
   };
 
   // Создает фрагмент из массива элементов
@@ -38,10 +67,14 @@
     window.filter.activate(userPictures);
   };
 
+  var onSubmitSuccessHandle = function (data) {
+    showPhotos(data);
+  };
+
   window.gallery = {
     showPhotos: showPhotos,
     renderPosts: renderPosts
   };
 
-  window.backend.getData(window.backend.GET_URL, showPhotos, window.utils.errorHandler);
+  window.backend.getData(window.backend.GET_URL, onSubmitSuccessHandle, window.utils.onSubmitErrorHandle);
 })();
