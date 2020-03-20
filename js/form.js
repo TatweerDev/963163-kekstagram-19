@@ -52,7 +52,7 @@
 
   var onImgUploadFormSubmit = function (evt) {
     evt.preventDefault();
-    window.backend.postData(window.backend.POST_URL, onSubmitSuccessHandle, onSubmitErrorHandle, new FormData(imgUploadForm));
+    window.backend.serverRequest('POST', window.backend.POST_URL, onSubmitSuccessHandle, onSubmitErrorHandle, new FormData(imgUploadForm));
   };
 
   imgUploadForm.addEventListener('submit', onImgUploadFormSubmit);

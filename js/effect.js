@@ -1,7 +1,11 @@
 'use strict';
 
 (function () {
-  var EFFECTS_PREVIEW = {
+  var DEFAULT_EFFECT_LEVEL = 100;
+  var MIN_BRIGHTNESS_VALUE = 1;
+  var MAX_BRIGHTNESS_VALUE = 3;
+  var MAX_BLUR_VALUE = 3;
+  var Effect = {
     NONE: 'effects__preview--none',
     CHROME: 'effects__preview--chrome',
     SEPIA: 'effects__preview--sepia',
@@ -9,8 +13,6 @@
     PHOBOS: 'effects__preview--phobos',
     HEAT: 'effects__preview--heat'
   };
-
-  var DEFAULT_EFFECT_LEVEL = 100;
   var effectPinBar = document.querySelector('.img-upload__effect-level');
   var effectLevelPin = document.querySelector('.effect-level__pin');
   var effectLevelDepth = document.querySelector('.effect-level__depth');
@@ -77,32 +79,31 @@
   };
 
   var getBrightness = function () {
-    var minValue = 1;
-    var maxValue = 3;
-    return (inputEffectLevel.value * (maxValue - minValue) / 100) + minValue;
+
+    return (inputEffectLevel.value * (MAX_BRIGHTNESS_VALUE - MIN_BRIGHTNESS_VALUE) / 100) + MIN_BRIGHTNESS_VALUE;
   };
 
   // Функция изменения глубины эффекта
   var applyImageEffect = function () {
     var currentImageEffect = imagePreview.getAttribute('class');
     switch (currentImageEffect) {
-      case EFFECTS_PREVIEW.CHROME: {
+      case Effect.CHROME: {
         imagePreview.style.filter = 'grayscale(' + inputEffectLevel.value / 100 + ')';
         break;
       }
-      case EFFECTS_PREVIEW.SEPIA: {
+      case Effect.SEPIA: {
         imagePreview.style.filter = 'sepia(' + inputEffectLevel.value / 100 + ')';
         break;
       }
-      case EFFECTS_PREVIEW.MARVIN: {
+      case Effect.MARVIN: {
         imagePreview.style.filter = 'invert(' + inputEffectLevel.value + '%)';
         break;
       }
-      case EFFECTS_PREVIEW.PHOBOS: {
-        imagePreview.style.filter = 'blur(' + 3 / 100 * inputEffectLevel.value + 'px)';
+      case Effect.PHOBOS: {
+        imagePreview.style.filter = 'blur(' + MAX_BLUR_VALUE / 100 * inputEffectLevel.value + 'px)';
         break;
       }
-      case EFFECTS_PREVIEW.HEAT: {
+      case Effect.HEAT: {
         imagePreview.style.filter = 'brightness(' + getBrightness() + ')';
         break;
       }

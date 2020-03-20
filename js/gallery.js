@@ -76,5 +76,5 @@
     renderPosts: renderPosts
   };
 
-  window.backend.getData(window.backend.GET_URL, onSubmitSuccessHandle, window.utils.onSubmitErrorHandle);
+  window.backend.serverRequest('GET', window.backend.GET_URL, onSubmitSuccessHandle, window.utils.onSubmitErrorHandle);
 })();

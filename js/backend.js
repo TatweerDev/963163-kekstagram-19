@@ -6,7 +6,7 @@
   var POST_URL = 'https://js.dump.academy/kekstagram';
   var TIMEOUT_TIME = 10000;
 
-  var statusCode = {
+  var StatusCode = {
     OK: 200,
     BAD_REQUEST: 400,
     NOT_FOUND: 404,
@@ -28,7 +28,7 @@
     };
 
     xhr.addEventListener('load', function () {
-      if (xhr.status === statusCode.OK) {
+      if (xhr.status === StatusCode.OK) {
         onLoad(xhr.response);
       } else {
         onError('Статус ответа: ' + xhr.status + ' ' + xhr.statusText);
@@ -46,22 +46,9 @@
     xhr.send(data);
   };
 
-  // Получает данные
-
-  var getData = function (url, onLoad, onError) {
-    serverRequest('GET', url, onLoad, onError);
-  };
-
-  // Принимает данные
-
-  var postData = function (url, onLoad, onError, data) {
-    serverRequest('POST', url, onLoad, onError, data);
-  };
-
   window.backend = {
     GET_URL: GET_URL,
     POST_URL: POST_URL,
-    getData: getData,
-    postData: postData
+    serverRequest: serverRequest
   };
 })();

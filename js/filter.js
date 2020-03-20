@@ -2,10 +2,9 @@
 
 (function () {
   var RANDOM_IMG_COUNT = 10;
-  var FILTER_TYPE = {
-    FILTER_DEFAULT: 'filter-default',
-    FILTER_RANDOM: 'filter-random',
-    FILTER_DISCUSSED: 'filter-discussed'
+  var Filter = {
+    RANDOM: 'filter-random',
+    DISCUSSED: 'filter-discussed'
   };
   var postData;
   var imageFilters = document.querySelector('.img-filters');
@@ -18,11 +17,11 @@
   var selectFilter = function (evt) {
     var filterId = evt.target.id;
     switch (filterId) {
-      case FILTER_TYPE.FILTER_RANDOM: {
+      case Filter.RANDOM: {
         randomPost();
         break;
       }
-      case FILTER_TYPE.FILTER_DISCUSSED: {
+      case Filter.DISCUSSED: {
         discussPost();
         break;
       }

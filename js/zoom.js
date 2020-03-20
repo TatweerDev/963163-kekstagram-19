@@ -1,7 +1,7 @@
 'use strict';
 
 (function () {
-  var IMG_SCALE = {
+  var Scale = {
     MAX_VALUE: 100,
     MIN_VALUE: 25,
     STEP: 25,
@@ -16,8 +16,8 @@
   var scaleBtn = document.querySelector('.img-upload__scale');
 
   var resetImgScale = function () {
-    scaleControl.value = IMG_SCALE.DEFAULT + '%';
-    imgUploadPreview.style.transform = 'scale(' + IMG_SCALE.DEFAULT / 100 + ')';
+    scaleControl.value = Scale.DEFAULT + '%';
+    imgUploadPreview.style.transform = 'scale(' + Scale.DEFAULT / 100 + ')';
   };
 
   var scaleImage = function (scaleValue) {
@@ -27,11 +27,11 @@
 
   var onScaleBtnClick = function (evt) {
     var currentScaleValue = parseInt(scaleControl.value, 10);
-    if (evt.target === scaleControlSmaller && currentScaleValue !== IMG_SCALE.MIN_VALUE
+    if (evt.target === scaleControlSmaller && currentScaleValue !== Scale.MIN_VALUE
     ) {
-      scaleImage(currentScaleValue - IMG_SCALE.STEP);
-    } else if (evt.target === scaleControlBigger && currentScaleValue !== IMG_SCALE.MAX_VALUE) {
-      scaleImage(currentScaleValue + IMG_SCALE.STEP);
+      scaleImage(currentScaleValue - Scale.STEP);
+    } else if (evt.target === scaleControlBigger && currentScaleValue !== Scale.MAX_VALUE) {
+      scaleImage(currentScaleValue + Scale.STEP);
     }
   };
 

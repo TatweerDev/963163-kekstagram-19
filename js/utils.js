@@ -1,17 +1,17 @@
 'use strict';
 
 (function () {
-  var KEY_CODE = {
+  var Key = {
     ESCAPE: 27,
     ENTER: 13
   };
   var isEscEvent = function (evt, action) {
-    if (evt.keyCode === KEY_CODE.ESCAPE) {
+    if (evt.keyCode === Key.ESCAPE) {
       action();
     }
   };
   var isEnterEvent = function (evt, action) {
-    if (evt.keyCode === KEY_CODE.ENTER) {
+    if (evt.keyCode === Key.ENTER) {
       action();
     }
   };
